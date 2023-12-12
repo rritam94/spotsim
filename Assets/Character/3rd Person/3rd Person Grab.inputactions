@@ -1,0 +1,46 @@
+{
+    "name": "3rd Person Grab",
+    "maps": [
+        {
+            "name": "New action map",
+            "id": "2a4c58f6-2f2e-4538-8b2c-a79a876fe930",
+            "actions": [
+                {
+                    "name": "Grab",
+                    "type": "Button",
+                    "id": "bbe6f4a6-774a-47ad-850e-d3040c98efa0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "474d81ba-9dae-4e5b-bb7f-7729eb493765",
+                    "path": "<Keyboard>/g",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

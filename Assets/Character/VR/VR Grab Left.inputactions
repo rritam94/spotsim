@@ -1,0 +1,34 @@
+{
+    "name": "VR Grab Left",
+    "maps": [
+        {
+            "name": "New action map",
+            "id": "2a4c58f6-2f2e-4538-8b2c-a79a876fe930",
+            "actions": [
+                {
+                    "name": "Grab",
+                    "type": "Button",
+                    "id": "bbe6f4a6-774a-47ad-850e-d3040c98efa0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5b746d75-290f-4121-895c-758de5bd6262",
+                    "path": "<OculusTouchController>{LeftHand}/triggerPressed",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

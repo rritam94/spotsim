@@ -1,0 +1,109 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using TMPro;
+
+public class Question
+{
+    public string question;
+    public string min;
+    public string max;
+
+
+    public Question(string q, string min, string max)
+    {
+        question = q;
+        this.min = min;
+        this.max = max;
+    }
+}
+
+public class QuestionInteraction : MonoBehaviour
+{
+    private List<Question> questions;
+    private int currQuestion;
+    private float lastTime;
+    public Canvas questionCanvas;
+    public TextMeshProUGUI displayQuestion;
+    private string selection;
+    public bool proceed;
+
+    private bool input;
+
+
+    public bool buttonDown = false;
+    void Start()
+    {
+        proceed = false;
+        lastTime = 0.0f;
+        selection = "";
+        currQuestion = 0;
+        questionCanvas.enabled = false;
+        questions = new List<Question>();
+        questions.Add(new Question("How mentally demanding was the task?", "1", "5"));
+        questions.Add(new Question("How physically demanding was the task?", "1", "5"));
+        displayQuestion.text = questions[currQuestion].question;
+    }
+    public void OnButtonPress(InputValue context)
+    {
+        input = context.Get<float>() == 1f;
+        //Debug.Log(input);
+        buttonDown = input;
+
+        Ray ray = new Ray(transform.position, transform.forward);
+
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit))
+        {
+            if(hit.transform.gameObject.tag == "Text")
+            {
+                Debug.Log(hit.transform.gameObject.name);
+                if(hit.transform.gameObject.name == "Plane" && selection != "" && Time.time > (lastTime + 1.0f))
+                {
+                    //check if they have answered the question, if so proceed
+                    currQuestion++;
+                    if (currQuestion < questions.Count)
+                    {
+                        displayQuestion.text = questions[currQuestion].question;
+                        selection = "";
+                    }
+                    else
+                    {
+                        proceed = true;
+                        questionCanvas.enabled = false;
+                    }
+                }
+                else
+                {
+                    lastTime = Time.time;
+                    selection = hit.transform.gameObject.name;
+                    displayQuestion.text = questions[currQuestion].question + "You selected " + selection + ". Click the whiteboard to proceed, or change your selection.";
+                }
+
+            }
+        }
+       
+    }
+
+    void Update()
+    {
+        /*Ray ray = new Ray(transform.position, transform.forward);
+        Debug.DrawRay(ray.origin, ray.direction * 10);
+        */
+        //experimenter determines tasks are completed
+        if (Input.GetKeyDown(KeyCode.RightArrow) && !questionCanvas.enabled)
+        {
+            questionCanvas.enabled = true;
+            currQuestion = 0;
+            if (questions.Count > 0)
+                displayQuestion.text = questions[currQuestion].question;
+            selection = "";
+            proceed = false;
+        }
+        
+        
+
+    }
+}
+

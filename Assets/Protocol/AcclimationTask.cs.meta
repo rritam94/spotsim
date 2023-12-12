@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a72a5aa65f73d4b448f643e4b7a94cd9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - dot_origin: {instanceID: 0}
+  - dot_0_5: {instanceID: 0}
+  - dot_1: {instanceID: 0}
+  - dot_2: {instanceID: 0}
+  - VR_Character: {instanceID: 0}
+  - AI_character: {instanceID: 0}
+  - timer: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
